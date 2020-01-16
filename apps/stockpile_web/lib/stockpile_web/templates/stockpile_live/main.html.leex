@@ -1,1 +1,5 @@
-Hello, world!
+<ol>
+  <%= for {id, term} <- @stack do %>
+    <li><%= term %> (<%= id %>)</li>
+  <% end %>
+</ol>

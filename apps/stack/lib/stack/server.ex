@@ -1,6 +1,5 @@
 defmodule Stack.Server do
   use GenServer
-  require Logger
 
   def start_link(_) do
     GenServer.start_link(__MODULE__, [], name: {:global, :stack_server})
@@ -26,5 +25,9 @@ defmodule Stack.Server do
     [{id, term} | new_state] = state
 
     {:reply, {id, term}, new_state}
+  end
+
+  def handle_call(:fetch, _from, state) do
+    {:reply, state, state}
   end
 end
