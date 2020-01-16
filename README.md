@@ -1,1 +1,1 @@
-# Stockpile.Umbrella
+# Live Stockpile - a Phoenix LiveView demo
