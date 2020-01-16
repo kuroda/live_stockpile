@@ -4,6 +4,7 @@ defmodule Stockpile.Umbrella.MixProject do
   def project do
     [
       apps_path: "apps",
+      apps: [:stockpile],
       start_permanent: Mix.env() == :prod,
       deps: deps()
     ]

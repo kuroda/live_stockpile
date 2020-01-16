@@ -10,10 +10,29 @@ $ npm i
 $ popd
 ```
 
-## Starting the server
+## Starting the stack server
 
 ```
-$ mix phx.server
+$ bin/start_stack.sh
+```
+
+## Starting the web server
+
+```
+$ bin/start_web.sh
 ```
 
 You can play with this demo by opening http://localhost:4000 with you browser.
+
+## Starting the IEx
+
+```
+$ hostname
+dummy
+$ bin/console.sh
+> Node.connect(:stack@dummy)
+> Node.list()
+[:stack@dummy, :web@dummy]
+```
+
+Replace `dummy` with your real hostname.

@@ -6,6 +6,9 @@ defmodule StockpileWeb.Application do
   use Application
 
   def start(_type, _args) do
+    {:ok, hostname} = :inet.gethostname()
+    true = Node.connect(:"stack@#{hostname}")
+
     # List all child processes to be supervised
     children = [
       # Start the endpoint when the application starts
