@@ -2,3 +2,12 @@
   <h1>Live Stockpile</h1>
   <p>A Phoenix LiveView app to explain Elixir's List and Process</p>
 </section>
+
+<div id="wrapper">
+  <%=
+    live_render(
+      @conn,
+      StockpileWeb.StockpileLive
+    )
+  %>
+</div>
