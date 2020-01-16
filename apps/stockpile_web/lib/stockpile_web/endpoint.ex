@@ -1,6 +1,8 @@
 defmodule StockpileWeb.Endpoint do
   use Phoenix.Endpoint, otp_app: :stockpile_web
 
+  socket "/live", Phoenix.LiveView.Socket
+
   socket "/socket", StockpileWeb.UserSocket,
     websocket: true,
     longpoll: false

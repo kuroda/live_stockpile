@@ -9,8 +9,6 @@
 # move said applications out of the umbrella.
 use Mix.Config
 
-
-
 config :stockpile_web,
   generators: [context_app: :stockpile]
 
@@ -19,7 +17,10 @@ config :stockpile_web, StockpileWeb.Endpoint,
   url: [host: "localhost"],
   secret_key_base: "ydt1w0fP1kOXVZBZMc/H2k/bM3/FO1lXz+nyDMOmTjYacwwbIi8pYruIAiJC/gy1",
   render_errors: [view: StockpileWeb.ErrorView, accepts: ~w(html json)],
-  pubsub: [name: StockpileWeb.PubSub, adapter: Phoenix.PubSub.PG2]
+  pubsub: [name: StockpileWeb.PubSub, adapter: Phoenix.PubSub.PG2],
+  live_view: [
+    signing_salt: "JULhkjtfmU8mFm7cypBxRIIFsg2E06lX"
+  ]
 
 # Configures Elixir's Logger
 config :logger, :console,
