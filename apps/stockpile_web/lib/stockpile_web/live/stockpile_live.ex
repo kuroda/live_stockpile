@@ -25,4 +25,11 @@ defmodule StockpileWeb.StockpileLive do
 
   @interval 1000
   defp schedule_update, do: Process.send_after(self(), :update_stack, @interval)
+
+  def handle_event("pop", _value, socket) do
+    pid = :global.whereis_name(:stack_server)
+    GenServer.call(pid, :pop)
+
+    {:noreply, socket}
+  end
 end
