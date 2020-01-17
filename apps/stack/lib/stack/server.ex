@@ -22,5 +22,13 @@ defmodule Stack.Server do
     {:reply, item, new_state}
   end
 
+  def handle_call(:pop, _from, []), do: {:reply, nil, []}
+
+  def handle_call(:pop, _from, state) do
+    [item | new_state] = state
+
+    {:reply, item, new_state}
+  end
+
   def handle_call(_, _from, state), do: {:reply, :error, state}
 end
