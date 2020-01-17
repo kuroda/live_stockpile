@@ -5,7 +5,9 @@
 ```
 $ git clone git@github.com:kuroda/live_stockpile.git
 $ cd live_stockpile
-$ pushd cd apps/stockpile_web/assets
+$ pushd cd apps/stockpile_web
+$ mix deps.get
+$ cd assets
 $ npm i
 $ popd
 ```
