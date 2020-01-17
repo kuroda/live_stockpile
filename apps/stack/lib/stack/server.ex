@@ -16,5 +16,11 @@ defmodule Stack.Server do
     {:reply, state, state}
   end
 
+  def handle_call({:push, item}, _from, state) do
+    new_state = [item | state]
+
+    {:reply, item, new_state}
+  end
+
   def handle_call(_, _from, state), do: {:reply, :error, state}
 end
