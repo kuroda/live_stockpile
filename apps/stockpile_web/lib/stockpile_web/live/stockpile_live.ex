@@ -1,14 +1,10 @@
 defmodule StockpileWeb.StockpileLive do
   use Phoenix.LiveView
 
-  @interval 1000
-
   def mount(_session, socket) do
     socket = assign(socket, :stack, [])
 
-    if connected?(socket) do
-      Process.send_after(self(), :update_stack, @interval)
-    end
+    if connected?(socket), do: schedule_update()
 
     {:ok, socket}
   end
@@ -22,10 +18,11 @@ defmodule StockpileWeb.StockpileLive do
         GenServer.call(pid, :fetch)
       end)
 
-    Process.send_after(self(), :update_stack, @interval)
+    schedule_update()
 
     {:noreply, socket}
   end
 
-  defp schedule_update
+  @interval 1000
+  defp schedule_update, do: Process.send_after(self(), :update_stack, @interval)
 end
