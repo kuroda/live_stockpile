@@ -32,4 +32,13 @@ defmodule StockpileWeb.StockpileLive do
 
     {:noreply, socket}
   end
+
+  def handle_event("push", %{"item" => ""}, socket), do: {:noreply, socket}
+
+  def handle_event("push", %{"item" => item}, socket) do
+    pid = :global.whereis_name(:stack_server)
+    GenServer.call(pid, {:push, item})
+
+    {:noreply, socket}
+  end
 end
