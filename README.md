@@ -8,7 +8,7 @@ $ cd live_stockpile
 $ pushd apps/stockpile_web
 $ mix deps.get
 $ cd assets
-$ npm i
+$ npm ci
 $ popd
 ```
 
