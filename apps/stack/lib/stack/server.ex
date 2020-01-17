@@ -1,15 +1,13 @@
 defmodule Stack.Server do
   use GenServer
+  require Logger
 
-  @initial_state ["item3", "item2", "item1"]
-  def start_link(_) do
-    GenServer.start_link(__MODULE__, @initial_state, name: {:global, :stack_server})
+  def start_link(initial_stack) do
+    GenServer.start_link(__MODULE__, initial_stack, name: {:global, :stack_server})
   end
 
   @impl GenServer
   def init(state) do
-    Process.flag(:trap_exit, true)
-
     {:ok, state}
   end
 
@@ -31,4 +29,6 @@ defmodule Stack.Server do
 
     {:reply, item, new_state}
   end
+
+  def handle_call(_, _from, state), do: {:reply, :error, state}
 end

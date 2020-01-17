@@ -5,9 +5,10 @@ defmodule Stack.Application do
 
   use Application
 
+  @initial_stack ["item3", "item2", "item1"]
   def start(_type, _args) do
     children = [
-      Stack.Server
+      {Stack.Server, @initial_stack}
     ]
 
     # See https://hexdocs.pm/elixir/Supervisor.html

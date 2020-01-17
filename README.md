@@ -44,9 +44,9 @@ Replace `dummy` with your real hostname.
 iex(console@dummy)3> pid = :global.whereis_name(:stack_server)
 #PID<11060.140.0>
 iex(console@dummy)4> GenServer.call(pid, {:push, "foo"})
-"foo"
+:ok
 iex(console@dummy)5> GenServer.call(pid, {:push, "bar"})
-"bar"
+:ok
 ```
 
 ## Removing an item from the stack
