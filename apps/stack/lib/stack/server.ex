@@ -1,8 +1,9 @@
 defmodule Stack.Server do
   use GenServer
 
+  @initial_state ["item3", "item2", "item1"]
   def start_link(_) do
-    GenServer.start_link(__MODULE__, [], name: {:global, :stack_server})
+    GenServer.start_link(__MODULE__, @initial_state, name: {:global, :stack_server})
   end
 
   @impl GenServer
@@ -13,18 +14,18 @@ defmodule Stack.Server do
   end
 
   @impl GenServer
-  def handle_call({:push, {id, term}}, _from, state) when is_integer(id) do
-    new_state = [{id, term} | state]
+  def handle_call({:push, item}, _from, state) do
+    new_state = [item | state]
 
-    {:reply, new_state, new_state}
+    {:reply, item, new_state}
   end
 
-  def handle_call(:pop, _from, []), do: nil
+  def handle_call(:pop, _from, []), do: {:reply, nil, []}
 
   def handle_call(:pop, _from, state) do
-    [{id, term} | new_state] = state
+    [item | new_state] = state
 
-    {:reply, {id, term}, new_state}
+    {:reply, item, new_state}
   end
 
   def handle_call(:fetch, _from, state) do

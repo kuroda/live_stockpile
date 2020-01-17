@@ -1,5 +1,5 @@
 <ol>
-  <%= for {id, term} <- @stack do %>
-    <li><%= term %> (<%= id %>)</li>
+  <%= for item <- @stack do %>
+    <li><%= item %></li>
   <% end %>
 </ol>
