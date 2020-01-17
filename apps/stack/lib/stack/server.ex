@@ -14,6 +14,10 @@ defmodule Stack.Server do
   end
 
   @impl GenServer
+  def handle_call(:fetch, _from, state) do
+    {:reply, state, state}
+  end
+
   def handle_call({:push, item}, _from, state) do
     new_state = [item | state]
 
@@ -26,9 +30,5 @@ defmodule Stack.Server do
     [item | new_state] = state
 
     {:reply, item, new_state}
-  end
-
-  def handle_call(:fetch, _from, state) do
-    {:reply, state, state}
   end
 end
